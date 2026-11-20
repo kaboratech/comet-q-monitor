@@ -1,0 +1,23 @@
+
+[Unit]
+Description=Kaboratech TRMNL Comet Q Receiver
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=orangepi
+Group=orangepi
+EnvironmentFile=/etc/trmnl-cometq.env
+ExecStart=/usr/bin/python3 /opt/trmnl-cometq/receiver.py
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/trmnl-cometq
+
+[Install]
+WantedBy=multi-user.target
