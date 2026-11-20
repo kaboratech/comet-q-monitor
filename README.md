@@ -2,7 +2,7 @@
 
 **A Kaboratech project for monitoring the GL.iNet Comet Q and sending system information to a TRMNL dashboard.**
 
-This project provides a lightweight monitoring solution for the GL.iNet Comet Q (GLKVM), allowing you to keep track of device health and connectivity through a TRMNL display.
+This project provides a lightweight monitoring solution for the GL.iNet Comet Q (GLKVM), allowing you to monitor device health and connectivity through a TRMNL display.
 
 ## Demo & Video Review
 
@@ -28,16 +28,62 @@ This project provides a lightweight monitoring solution for the GL.iNet Comet Q 
 
 ## How It Works
 
-The project uses two components:
+The project uses two main components:
 
 1. **Comet Q client:** collects system information from the GL.iNet Comet Q and sends it to a receiver on the local network.
 2. **TRMNL receiver:** accepts monitoring data, forwards it to TRMNL and detects when the Comet Q stops reporting.
 
 The receiver runs on a separate Linux host. The Comet Q does not need to communicate directly with the TRMNL service.
 
-## Project Status
+## Repository Structure
 
-The project is being prepared for public release. Installation instructions, configuration examples and security notes will be added after validation.
+```text
+comet-q-monitor/
+├── docs/
+│   ├── installation.md
+│   ├── configuration.md
+│   ├── security.md
+│   ├── architecture.md
+│   └── troubleshooting.md
+├── examples/
+│   ├── trmnl-glkvm.conf.example
+│   └── trmnl-cometq.env.example
+├── receiver/
+│   ├── receiver.py
+│   └── trmnl-cometq.service
+├── scripts/
+│   ├── glkvm-info
+│   └── trmnl-glkvm.sh
+├── .gitignore
+└── README.md
+```
+
+## Documentation
+
+Detailed guides are available in the `docs/` directory:
+
+- [Installation Guide](docs/installation.md)
+- [Configuration Guide](docs/configuration.md)
+- [Security Guide](docs/security.md)
+- [Project Architecture](docs/architecture.md)
+- [Troubleshooting](docs/troubleshooting.md)
+
+## Requirements
+
+- GL.iNet Comet Q / GLKVM
+- SSH access to the Comet Q
+- A separate Linux host to run the receiver
+- Python 3 and curl on the receiver
+- A TRMNL account and compatible private plugin
+- Network connectivity between the Comet Q and the receiver
+
+## Configuration
+
+Example configuration files are provided in the `examples/` directory.
+
+Replace all placeholder values with your own settings before running the scripts.
+
+**Never publish your actual TRMNL webhook URL, passwords, tokens or private network information.**
 
 ## Security
 
@@ -45,13 +91,17 @@ The project is being prepared for public release. Installation instructions, con
 - Use example configuration files with placeholder values.
 - Keep the receiver accessible only through a trusted network or VPN.
 - Do not expose the receiver directly to the public internet.
+- The receiver uses HTTP and source IP filtering; this does not provide encryption or authentication.
 
-## Requirements
+Read the [Security Guide](docs/security.md) before installation.
 
-- GL.iNet Comet Q / GLKVM
-- A Linux host to run the receiver
-- A TRMNL account and compatible private plugin
-- Network connectivity between the Comet Q and the receiver
+## Project Status
+
+The project is published as an initial public release.
+
+Documentation is available for installation, configuration, security, architecture and troubleshooting.
+
+The project has not yet been independently tested by other users. Feedback, suggestions and contributions are welcome.
 
 ## About Kaboratech
 
@@ -60,4 +110,3 @@ Developed by **Kaboratech**, covering hardware reviews, homelab projects, monito
 - YouTube: https://www.youtube.com/c/kaboratech/videos
 - GitHub: https://github.com/kaboratech
 
-More documentation and project files will be published as they are reviewed and prepared for release.
