@@ -1,0 +1,28 @@
+# Private configuration
+*.env
+*.conf
+.env
+.env.*
+
+# Credentials and secrets
+*secret*
+*password*
+*token*
+*webhook*
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.venv/
+venv/
+
+# System files
+.DS_Store
+Thumbs.db
