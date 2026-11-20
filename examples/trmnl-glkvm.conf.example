@@ -1,0 +1,5 @@
+# Kaboratech - Comet Q Monitor
+# Example configuration file.
+# Replace the placeholder with your receiver address.
+
+RECEIVER_URL="http://RECEIVER_HOST:8766/cometq"
